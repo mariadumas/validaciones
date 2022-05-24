@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/app.css">
+    <title>Register</title>
+</head>
+<body>
+  <h1>Formulario de registro</h1>
+    <div class="form-container">
+    <form action="/register" method="POST" enctype="multipart/form-data">
+
+    <label for="nombre">Nombre</label>
+    <input type="text" name="nombre" class="is-invalid"  value="<%= locals.oldData ? oldData.nombre : null %>">
+    <% if (locals.errors && errors.nombre) { %>
+    <p class="text-danger">
+      <%= errors.nombre.msg %> 
+    </p>
+    <% } %> 
+    <label for="email">Email</label>
+    <input 
+    type="text" 
+    name="email" 
+    id="text"
+    value="<%= locals.oldData ? oldData.email : null %>">  
+    <% if (locals.errors && errors.email) { %>
+      <p class="text-danger">
+        <%= errors.email.msg %> 
+      </p>
+      <% } %> 
+    <label for="pass">Contraseña</label>
+    <input type="password" name="pass">
+    <% if (locals.errors && errors.pass) { %>
+      <p class="text-danger">
+        <%= errors.pass.msg %> 
+      </p>
+      <% } %> 
+    <input type="file" name="image" id="" value="<%= locals.oldData ? oldData.image : null %>">
+    <% if (locals.errors && errors.image) { %>
+      <p class="text-danger">
+        <%= errors.image.msg %> 
+      </p>
+      <% } %> 
+    <button type="submit">Enviar</button>
+  </form>
+</div>
+</body>
+</html>
